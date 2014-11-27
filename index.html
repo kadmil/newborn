@@ -15,21 +15,20 @@
     <header ng-class="totalClass">
         <span>{{totalState}} состояние; Баллы по КШОНН: <span class='label'>{{totalScore}}</span></span>
     </header>
-    <div class="container-fluid">
-        <div class="row" class="btn-group" ng-repeat="option in assesment">
-            <div class="col-sm-3 col-xs-12">{{option.type}} <span class="label" ng-class="getOptionClass(option.score)">{{option.score}}</span>
-            </div>
-            <div class="col-sm-3 col-xs-12 btn btn-success main-btn" ng-model="option.score" btn-radio="0">
+    <div>
+        <div class="btn-group" ng-repeat="option in assesment">
+            <div>{{option.type}} <span class="label" ng-class="getOptionClass(option.score)">{{option.score}}</span></div>
+            <div class="btn btn-success main-btn" ng-model="option.score" btn-radio="0">
                 <div class="btn-group">
                     <div class="btn btn-success" ng-model="option.labelId" btn-radio="'0_'+label.id" ng-repeat="label in option.labels[0]">{{label.text}}</div>
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-12 btn btn-warning main-btn" ng-model="option.score" btn-radio="1">
+            <div class="btn btn-warning main-btn" ng-model="option.score" btn-radio="1">
                 <div class="btn-group">
                     <div class="btn btn-warning" ng-model="option.labelId" btn-radio="'1_'+label.id" ng-repeat="label in option.labels[1]">{{label.text}}</div>
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-12 btn btn-danger main-btn" ng-model="option.score" btn-radio="2">
+            <div class="btn btn-danger main-btn" ng-model="option.score" btn-radio="2">
                 <div class="btn-group">
                     <div class="btn btn-danger" ng-model="option.labelId" btn-radio="'2_'+label.id" ng-repeat="label in option.labels[2]">{{label.text}}</div>
                 </div>
