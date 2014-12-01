@@ -6,20 +6,23 @@
     <title>КШОНН</title>
     <link rel="stylesheet" href="./bower/css/bower.css"></link>
     <link rel="stylesheet" href="./css/styles.css"></link>
-    <link href="http://fonts.googleapis.com/css?family=Noto+Serif:700|PT+Sans&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <script src="./bower/scripts/bower.js"></script>
     <script src="./scripts/app.js"></script>
 </head>
 
 <body ng-controller="mainCtrl">
     <header ng-class="totalClass">
-        <div>Баллы по КШОНН: {{totalScore}}</div>
+        <div>Баллы по КШОНН: {{totalScore}}
+            <!-- <span ng-repeat="assessmentCategory in assessmentLabels">{{assessmentCategory.typeShort}}<span class="label" ng-class="getScoreClass(assessment[$index].score)">{{assessment[$index].score}}</span>
+            </span> -->
+        </div>
         <div>{{totalState}} состояние</div>
         <div>{{transporting.text}}</div>
     </header>
     <div class="assessment">
         <div ng-repeat="assessmentCategory in assessmentLabels">
-            <div>{{assessmentCategory.type}} <span class="label" ng-class="getScoreClass(assessment[$index].score)">{{assessment[$index].score}}</span>
+            <div>{{assessmentCategory.type}}
             </div>
             <div ng-repeat="labelGroup in assessmentCategory.labels" ng-model="assessment[$parent.$index].score" btn-radio="$index">
                 <div class="btn" ng-class="getScoreClass($parent.$index)" ng-model="assessment[$parent.$parent.$index].selectedOption" btn-radio="$parent.$parent.$index + '_'+ $parent.$index + '_' +$index" ng-repeat="label in labelGroup">{{label.text}}</div>
