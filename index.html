@@ -13,7 +13,9 @@
 
 <body ng-controller="mainCtrl">
     <header ng-class="totalClass">
-        <span>{{totalState}} состояние; Баллы по КШОНН: <span class='label'>{{totalScore}}</span>; {{transporting.text}}</span>
+        <div>Баллы по КШОНН: {{totalScore}}</div>
+        <div>{{totalState}} состояние</div>
+        <div>{{transporting.text}}</div>
     </header>
     <div class="assessment">
         <div ng-repeat="assessmentCategory in assessmentLabels">
