@@ -1,0 +1,6 @@
+<div>
+    <span>Баллы по КШОНН: {{score}}</span>
+    <span ng-show="score > 0">
+    	<span ng-repeat="assessmentCategory in assessmentLabels" class="label" ng-class="getScoreClass(assessment[$index].score)">{{assessmentCategory.typeShort}}</span>
+    </span>
+</div>

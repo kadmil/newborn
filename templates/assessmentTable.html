@@ -1,0 +1,8 @@
+<div class="assessment">
+    <div ng-repeat="assessmentCategory in assessmentLabels">
+        <div>{{assessmentCategory.type}}</div>
+        <div ng-repeat="labelGroup in assessmentCategory.labels" ng-model="assessment[$parent.$index].score" btn-radio="$index">
+            <div class="btn" ng-class="getScoreClass($parent.$index)" ng-model="assessment[$parent.$parent.$index].selectedOption" btn-radio="$parent.$parent.$index + '_'+ $parent.$index + '_' +$index" ng-repeat="label in labelGroup">{{label.text}}</div>
+        </div>
+    </div>
+</div>

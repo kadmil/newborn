@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>КШОНН</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./bower/css/bower.css"></link>
     <link rel="stylesheet" href="./css/styles.css"></link>
     <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -17,33 +18,15 @@
             <h2>Клиническая Шкала Оценки Недоношенных Новорожденных</h2>
         </div>
         <div>
-            <div>
-                <span>Баллы по КШОНН: {{totalScore}}</span>
-                <span ng-show="totalScore > 0">
-                <span ng-repeat="assessmentCategory in assessmentLabels" class="label" ng-class="getScoreClass(assessment[$index].score)">{{assessmentCategory.typeShort}}</span>
-                </span>
-            </div>
+            <assessment-results score="totalScore" assessment="assessment"></assessment-results>
             <div>{{totalState}} состояние</div>
             <div>{{transporting.text}}</div>
         </div>
     </float-header>
-    <div class="assessment">
-        <div ng-repeat="assessmentCategory in assessmentLabels">
-            <div>{{assessmentCategory.type}}
-            </div>
-            <div ng-repeat="labelGroup in assessmentCategory.labels" ng-model="assessment[$parent.$index].score" btn-radio="$index">
-                <div class="btn" ng-class="getScoreClass($parent.$index)" ng-model="assessment[$parent.$parent.$index].selectedOption" btn-radio="$parent.$parent.$index + '_'+ $parent.$index + '_' +$index" ng-repeat="label in labelGroup">{{label.text}}</div>
-            </div>
-        </div>
-    </div>
-    <div class="recommendations" ng-show="recommendations && recommendations.length > 0">
-        <div>Подготовка к транспортировке:</div>
-        <div>
-            <div ng-repeat="recommendation in recommendations | orderBy:'-level'" class="recommendation" ng-class="getScoreClass(recommendation.level)">
-                <div>{{recommendation.type}}:</div>
-                <div>{{recommendation.text}}</div>
-            </div>
-        </div>
-    </div>
+
+    <assessment-table assessment="assessment"></assessment-table>
+
+    <recommendation-list assessment="assessment"></recommendation-list>
+
     <footer ng-class="totalClass">Методика - ©В.А. Буштырев</footer>
 </body>

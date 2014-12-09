@@ -1,0 +1,9 @@
+<div class="recommendations" ng-show="recommendations && recommendations.length > 0">
+    <div>Подготовка к транспортировке:</div>
+    <div>
+        <div ng-repeat="recommendation in recommendations | orderBy:'-level'" class="recommendation" ng-class="getScoreClass(recommendation.level)">
+            <div>{{recommendation.type}}:</div>
+            <div>{{recommendation.text}}</div>
+        </div>
+    </div>
+</div>
