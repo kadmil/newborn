@@ -1,0 +1,6 @@
+<div>
+    <div>{{::assessmentCategory.type}}</div>
+    <div ng-repeat="labelGroup in assessmentCategory.labels">
+        <div class="btn {{::getScoreClass($parent.$index)}}" ng-class="active($parent.$index,$index)" ng-click="click($parent.$index,$index)" ng-repeat="label in labelGroup">{{::label.text}}</div>
+    </div>
+</div>
